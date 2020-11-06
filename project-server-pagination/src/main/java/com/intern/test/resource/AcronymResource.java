@@ -114,5 +114,10 @@ public class AcronymResource {
 		this.changesMapper.addChanges(changes.getID(), changes.getChanges(), changes.getTimestamp());
 	}
 	
+	@DeleteMapping("/changes/{id}")
+	public void deleteChanges(@PathVariable Number id) {
+		this.changesMapper.remove(id);
+	}
+	
 
 }
