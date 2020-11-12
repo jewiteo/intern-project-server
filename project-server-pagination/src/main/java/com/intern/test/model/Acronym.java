@@ -6,7 +6,15 @@ public class Acronym {
 	private String full_term;
 	private String remark;
 	private String language;
+	private String creator;
 	
+	
+	public String getCreator() {
+		return creator;
+	}
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
 	public int getID() {
 		return ID;
 	}

@@ -16,44 +16,44 @@ import com.intern.test.model.Acronym;
 @Mapper
 public interface AcronymMapper {
 
-	@Select("select count(*) from testing")
+	@Select("select count(*) from acronym")
 	Integer countAllAcronym();
 	
-	@Select("select count(acronym) from testing WHERE "
+	@Select("select count(acronym) from acronym WHERE "
 			+ "acronym LIKE '%${acronym}%' "
 			+ "OR full_term LIKE '%${acronym}%' "
 			+ "OR remark LIKE '%${acronym}%' ")
 	Integer countAllSearchedAcronym(String acronym);
 	
-	@Select("select count(acronym) from testing WHERE language LIKE '%${language}%'")
+	@Select("select count(acronym) from acronym WHERE language LIKE '%${language}%'")
 	Integer countAllSearchedLanguage(String language);
 	
-	@Select("select * from testing WHERE acronym LIKE '%${acronym}%' OFFSET ${offset} rows fetch next ${limit} rows only")
+	@Select("select * from acronym WHERE acronym LIKE '%${acronym}%' OFFSET ${offset} rows fetch next ${limit} rows only")
 	List<Acronym> searchForAcronym(String acronym, Number offset, Number limit);
 	
-	@Select("select * from testing WHERE "
+	@Select("select * from acronym WHERE "
 			+ "acronym LIKE '%${search}%' "
 			+ "OR full_term LIKE '%${search}%' "
 			+ "OR remark LIKE '%${search}%' "
 			+ "OFFSET ${offset} rows fetch next ${limit} rows only")
 	List<Acronym> search(String search, Number offset, Number limit);
 	
-	@Select("select * from testing WHERE "
+	@Select("select * from acronym WHERE "
 			+ "language LIKE '${search}' "
 			+ "OFFSET ${offset} rows fetch next ${limit} rows only")
 	List<Acronym> searchLanguage(String search, Number offset, Number limit);
 
-	@Select("select * from testing OFFSET ${offset} rows fetch next ${limit} rows only")
+	@Select("select * from acronym OFFSET ${offset} rows fetch next ${limit} rows only")
 	List<Acronym> findPage(Number offset, Number limit);
 	
-	@Delete("Delete from testing where ID = #{id}")
+	@Delete("Delete from acronym where ID = #{id}")
 	void remove(Number id);
 	
 	//@Select("select * from testing where ID = #{id}")
 	//Acronym findById(Number id);
 
-	@Insert("insert into testing (ACRONYM,FULL_TERM,REMARK,LANGUAGE) Values (#{acronym},#{full_term},#{remark},#{language})")
-	void addAcronym(String acronym, String full_term, String remark, String language);
+	@Insert("insert into acronym (ACRONYM,FULL_TERM,REMARK,LANGUAGE,CREATOR) Values (#{acronym},#{full_term},#{remark},#{language},#{creator})")
+	void addAcronym(String acronym, String full_term, String remark, String language, String creator);
 	
 	
 	@Update("Update testing set ACRONYM = #{acronym}, FULL_TERM = #{full_term}, REMARK = #{remark} where ID=#{id}")

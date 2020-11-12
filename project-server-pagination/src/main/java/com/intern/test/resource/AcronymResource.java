@@ -94,7 +94,7 @@ public class AcronymResource {
 	@PostMapping("/new")
 	public void addAcronym(@RequestBody Acronym acronym) {
 		System.out.print("\nAcronym has been added");
-		this.acronymMapper.addAcronym(acronym.getAcronym(),acronym.getFull_term(),acronym.getRemark(),acronym.getLanguage());
+		this.acronymMapper.addAcronym(acronym.getAcronym(),acronym.getFull_term(),acronym.getRemark(),acronym.getLanguage(),acronym.getCreator());
 	}
 	
 	@PutMapping("/all/{id}")
